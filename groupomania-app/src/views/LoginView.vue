@@ -1,4 +1,6 @@
 <template>
+
+
   <div class="login">
    <form class="form-signin" >
      
@@ -23,11 +25,6 @@
         required
       />
   
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Remember me
-        </label>
-      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         log in
       </button>
@@ -69,6 +66,7 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -97,6 +95,10 @@ body {
 .sr-only {
   width: 100%;
   display: inline-block;
+}
+
+.btn-primary {
+  margin-top: 10px;
 }
 
 </style>

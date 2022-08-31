@@ -1,10 +1,10 @@
 <template>
   <div>
-    <form v-on:submit.prevent="submitForm" method="post" class="form-signin">
+    <form v-on:submit.prevent="submitForm()" method="post" class="form-signin">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="first_name" class="sr-only">Nom</label>
       <input
-        v-model="first_name"
+        v-model="body.first_name"
         type="text"
         id="first_name"
         class="form-control"
@@ -15,7 +15,7 @@
 
       <label for="last_name" class="sr-only">Prenom</label>
       <input
-        v-model="last_name"
+        v-model="body.last_name"
         type="text"
         id="last_name"
         class="form-control"
@@ -25,7 +25,7 @@
       />
       <label for="email" class="sr-only">Email address</label>
       <input
-        v-model="email"
+        v-model="body.email"
         type="email"
         id="email"
         class="form-control"
@@ -35,7 +35,7 @@
       />
       <label for="password" class="sr-only">Password</label>
       <input
-        v-model="password"
+        v-model="body.password"
         type="password"
         id="password"
         class="form-control"
@@ -62,21 +62,24 @@ export default {
   name: "signup-form",
   data() {
     return {
+      body: {
         first_name: null,
         last_name: null,
         email: null,
         password: null,
-      
+      },
     };
   },
   methods: {
     submitForm() {
-      http.post("/auth/signup", this.first_name, this.last_name, this.email,this.password).then((response) => {
-      console.log(response)
+      http.post("/auth/signup", this.body).then((response) => {
+        this.body = response.data;
       });
     },
   },
 };
+
+
 </script>
 
 <style scoped>
@@ -132,4 +135,8 @@ body {
   width: 100%;
   display: inline-block;
 }
+.btn-primary {
+  margin-top: 10px;
+}
+
 </style>
